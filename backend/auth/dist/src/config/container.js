@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
+const tsyringe_1 = require("tsyringe");
+const userRepository_1 = __importDefault(require("../repositories/userRepository"));
+const registerService_1 = __importDefault(require("../services/registerService"));
+const loginService_1 = __importDefault(require("../services/loginService"));
+const forgotPasswordService_1 = __importDefault(require("../services/forgotPasswordService"));
+const logoutService_1 = __importDefault(require("../services/logoutService"));
+const refreshTokenService_1 = __importDefault(require("../services/refreshTokenService"));
+const hashService_1 = __importDefault(require("../services/hashService"));
+tsyringe_1.container.registerSingleton('UserRepository', userRepository_1.default);
+tsyringe_1.container.registerSingleton('RegisterService', registerService_1.default);
+tsyringe_1.container.registerSingleton('LoginService', loginService_1.default);
+tsyringe_1.container.registerSingleton('ForgotPasswordService', forgotPasswordService_1.default);
+tsyringe_1.container.registerSingleton('LogoutService', logoutService_1.default);
+tsyringe_1.container.registerSingleton('RefreshTokenService', refreshTokenService_1.default);
+tsyringe_1.container.registerSingleton('HashService', hashService_1.default);
+exports.default = tsyringe_1.container;

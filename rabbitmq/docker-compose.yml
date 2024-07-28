@@ -1,0 +1,21 @@
+services:
+  rmq:
+    image: rabbitmq:3.8-management
+    container_name: rmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - app_genesis_network
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  app_genesis_network:
+    external: true
